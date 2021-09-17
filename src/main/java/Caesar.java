@@ -5,32 +5,138 @@ public class Caesar {
     // and returns the encrypted String
     // Ex. encryptCaesar("Hello, World!") => "Khoor, Zruog!"
     public static String encryptCaesar(String message) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String res = "";
+        char x;
+        for (int i = 0; i<message.length(); i++){
+            x = message.charAt(i);
+            if ((x >= 'a' && x <= 'w')||(x >= 'A' && x <= 'W')){
+                int num = x;
+                int num2 = num + 3;
+                char char1 = (char) num2;
+                res += char1;
+            }
+            else if ((x >= 'x' && x <= 'z')||(x >= 'X' && x <= 'Z')){
+                int num = x;
+                int num2 = num - 23;
+                char char1 = (char) num2;
+                res += char1;
+            }
+            else {
+                res += x;
+            }
+        }
+        return res;
     }
 
     // Given a String, decrypts the String with the Caesar cipher
     // and returns the original String
     // Ex. decryptCaesar("Khoor, Zruog!") => "Hello, World!"
     public static String decryptCaesar(String message) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String res = "";
+        char x;
+        for (int i = 0; i<message.length(); i++){
+            x = message.charAt(i);
+            if ((x >= 'd' && x <= 'z')||(x >= 'D' && x <= 'Z')){
+                int num = x;
+                int num2 = num - 3;
+                char char1 = (char) num2;
+                res += char1;
+            }
+            else if ((x >= 'a' && x <= 'c')||(x >= 'A' && x <= 'C')){
+                int num = x;
+                int num2 = num + 23;
+                char char1 = (char) num2;
+                res += char1;
+            }
+            else {
+                res += x;
+            }
+        }
+        return res;
     }
 
     // Given a String and a key corresponding to a shift, encrypts
     // the String using the given key and returns the encrypted String
     // Ex. encryptCaesarKey("Hello, World!", 5) => "Mjqqt, Btwqi!".
     public static String encryptCaesarKey(String message, int key) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String res = "";
+        char x;
+        key = key % 26;
+        for (int i = 0; i<message.length(); i++){
+            x = message.charAt(i);
+            if ((x >= 'a' && x <= 'z')){
+                int num = x;
+                int num2 = num + key;
+                if (num2 <= 122){
+                    char char1 = (char) num2;
+                    res += char1;
+                }
+                else{
+                    int num3 = num - (26-key);
+                    char char1 = (char) num3;
+                    res += char1;
+                }
+            }
+            else if ((x >= 'A' && x <= 'Z')){
+                int num = x;
+                int num2 = num + key;
+                if (num2 <= 90){
+                    char char1 = (char) num2;
+                    res += char1;
+                }
+                else{
+                    int num3 = num - (26-key);
+                    char char1 = (char) num3;
+                    res += char1;
+                }
+            }
+            else {
+                res += x;
+            }
+        }
+        return res;
     }
 
     // Given a String and a key corresponding to a shift, decrypts
     // the String using the given key and returns the original String
     // Ex. decryptCaesarKey("Mjqqt, Btwqi!", 5) => "Hello, World!"
     public static String decryptCaesarKey(String message, int key) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String res = "";
+        char x;
+        key = key % 26;
+        for (int i = 0; i<message.length(); i++){
+            x = message.charAt(i);
+            if ((x >= 'a' && x <= 'z')){
+                int num = x;
+                int num2 = num - key;
+                if (num2 > 122 - (26-key)){
+                    char char1 = (char) num2;
+                    res += char1;
+                }
+                else{
+                    int num3 = num + (26-key);
+                    char char1 = (char) num3;
+                    res += char1;
+                }
+            }
+            else if ((x > 'A' && x <= 'Z')){
+                int num = x;
+                int num2 = num - key;
+                if (num2 >= 90- (26-key)){
+                    char char1 = (char) num2;
+                    res += char1;
+                }
+                else{
+                    int num3 = num + (26-key);
+                    char char1 = (char) num3;
+                    res += char1;
+                }
+            }
+            else {
+                res += x;
+            }
+        }
+        return res;
     }
 
 
