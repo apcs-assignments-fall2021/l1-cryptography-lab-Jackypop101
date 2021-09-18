@@ -109,7 +109,7 @@ public class Caesar {
             if ((x >= 'a' && x <= 'z')){
                 int num = x;
                 int num2 = num - key;
-                if (num2 > 122 - (26-key)){
+                if (num2 >= 97 && num2 <= 122){
                     char char1 = (char) num2;
                     res += char1;
                 }
@@ -119,10 +119,10 @@ public class Caesar {
                     res += char1;
                 }
             }
-            else if ((x > 'A' && x <= 'Z')){
+            else if ((x >= 'A' && x <= 'Z')){
                 int num = x;
-                int num2 = num - key;
-                if (num2 >= 90- (26-key)){
+                int num2 = num - key; // 72 - 4
+                if (num2 >= 65 && num2 <= 90){
                     char char1 = (char) num2;
                     res += char1;
                 }
