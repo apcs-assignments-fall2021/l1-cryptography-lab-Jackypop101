@@ -47,8 +47,7 @@ public class Caesar {
                 int num2 = num + 23;
                 char char1 = (char) num2;
                 res += char1;
-            }
-            else {
+            } else {
                 res += x;
             }
         }
