@@ -73,11 +73,11 @@ public class Vigenere {
                 if ((x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z')) {
                     char add = encryptCaesarLetter(x, keyletter);
                     res += add;
-                    if (keyletter < 3) {
-                        keyletter += 1;
+                    if (keyIndex < key.length() - 1) {
+                        keyIndex += 1;
                     }
                     else {
-                        keyletter = 0;
+                        keyIndex = 0;
                     }
                 }
                 else {
@@ -90,7 +90,29 @@ public class Vigenere {
 
 
     public static String decryptVigenere(String message, String key) {
-        return message;
+        String res = "";
+        char x;
+        int keyIndex = 0;
+        for (int i = 0; i<message.length(); i++) {
+            int keyletter = key.charAt(keyIndex);
+            keyletter -= 'A';
+            x = message.charAt(i);
+            if ((x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z')) {
+                char add = decryptCaesarLetter(x, keyletter);
+                res += add;
+                if (keyIndex < key.length() - 1) {
+                    keyIndex += 1;
+                }
+                else {
+                    keyIndex = 0;
+                }
+            }
+            else {
+                char add = encryptCaesarLetter(x, keyletter);
+                res += add;
+            }
+        }
+        return res;
     }
 
 
